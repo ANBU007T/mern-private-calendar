@@ -29,7 +29,7 @@ export default function Layout({ children }) {
         <button
           className="mobile-menu-btn"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Open menu"
+          aria-label="Toggle menu"
         >
           {menuOpen ? '✕' : '☰'}
         </button>
@@ -38,6 +38,7 @@ export default function Layout({ children }) {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="mobile-menu">
+
           <NavLink
             to="/dashboard"
             onClick={closeMenu}
@@ -119,7 +120,10 @@ export default function Layout({ children }) {
             <span className="codename">{user?.codeName}</span>
           </div>
 
-          <button className="btn btn-ghost mobile-logout" onClick={handleLogout}>
+          <button
+            className="btn btn-ghost mobile-logout"
+            onClick={handleLogout}
+          >
             Logout
           </button>
         </div>
@@ -127,10 +131,17 @@ export default function Layout({ children }) {
 
       {/* Desktop Sidebar */}
       <aside className="sidebar">
-        <div className="sidebar-brand">Private Calendar</div>
-        <div className="sidebar-sub">INVITATION ONLY</div>
+
+        <div className="sidebar-brand">
+          Private Calendar
+        </div>
+
+        <div className="sidebar-sub">
+          INVITATION ONLY
+        </div>
 
         <nav className="sidebar-nav">
+
           <NavLink
             to="/dashboard"
             className={({ isActive }) =>
@@ -199,6 +210,7 @@ export default function Layout({ children }) {
               </NavLink>
             </>
           )}
+
         </nav>
 
         <div className="sidebar-divider" />
@@ -206,6 +218,7 @@ export default function Layout({ children }) {
         <div className="sidebar-footer">
           Signed in as
           <br />
+
           <span
             className="codename"
             style={{ color: 'var(--text)' }}
@@ -216,18 +229,22 @@ export default function Layout({ children }) {
 
         <button
           className="btn btn-ghost"
-          style={{ marginTop: '0.75rem', width: '100%' }}
+          style={{
+            marginTop: '0.75rem',
+            width: '100%'
+          }}
           onClick={handleLogout}
         >
           Logout
         </button>
+
       </aside>
 
+      {/* Main Content */}
       <main className="main-content">
         {children}
       </main>
+
     </div>
-  )
-}
   )
 }
